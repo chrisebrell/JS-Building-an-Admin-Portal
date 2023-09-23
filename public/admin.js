@@ -21,7 +21,17 @@ function renderBook(book) {
 async function updateQuantity(bookId) {
     let input = document.querySelector(`#book-${bookId}`)
     let quantity = input.value;
-    let response = await fetch(api_base_url + '/updateBook')
+    const data = {
+        id: bookId, 
+        quantity,
+    }
+    let response = await fetch(api_base_url + '/updateBook', {
+      method: "PATCH", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
     console.log(response)
 }
 main()
