@@ -18,8 +18,11 @@ function renderBook(book) {
     `
 }
 
-function updateQuantity() {
-
+async function updateQuantity(bookId) {
+    let input = document.querySelector(`#book-${bookId}`)
+    let quantity = input.value;
+    let response = await fetch(api_base_url + '/updateBook')
+    console.log(response)
 }
 main()
 
